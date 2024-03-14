@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const initializeMongoose = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017");
+    await mongoose.connect(process.env.MONGOOSE_URI);
   } catch (error) {
     console.log(error);
   }

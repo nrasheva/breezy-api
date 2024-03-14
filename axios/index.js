@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const baseURL = 'https://air-quality-api.open-meteo.com/v1/air-quality';
+const baseURL = process.env.AIR_BASE_URL;
 const timeout = 10000;
 
 axios.defaults.baseURL = baseURL;
