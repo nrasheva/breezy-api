@@ -1,6 +1,6 @@
 const { axios } = require("../axios");
 
-async function getlocationCoordinates(req, res) {
+async function getLocationCoordinates(req, res) {
   const { location } = req.query;
 
   if (!location) {
@@ -13,13 +13,10 @@ async function getlocationCoordinates(req, res) {
   const URL = `https://api.geoapify.com/v1/geocode/search?text=${encodedLocation}&apiKey=${process.env.GEOAPIFY_KEY}`;
 
   try {
-    const locationCoordinates = await axios.get(URL);
+    const response = await axios.get(URL);
+    const locationCoordinates = response.data;
 
-    const response = {
-      locationCoordinates: locationCoordinates,
-    };
-
-    res.send(response);
+    res.json({ locationCoordinates });
   } catch (error) {
     console.error("Failed to fetch location coordinates:", error); // Log the actual error
     res
@@ -30,4 +27,4 @@ async function getlocationCoordinates(req, res) {
   }
 }
 
-module.exports = { getlocationCoordinates };
+module.exports = { getLocationCoordinates };
