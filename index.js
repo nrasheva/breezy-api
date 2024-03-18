@@ -11,7 +11,7 @@ const port = 3000;
 initializeMongoose();
 
 app.use(cors());
-app.use( express.json())
+app.use(express.json());
 
 app.use("/", router);
 
