@@ -11,7 +11,7 @@ async function getAirQuality(req, res) {
   }
 
   const baseURL = process.env.AIR_BASE_URL;
-  const requestURL = `${baseURL}/v1/air-quality?latitude=${lat}&longitude=${lng}&current=current=european_aqi,pm10,pm2_5,carbon_monoxide,dust,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timeformat=unixtime&timezone=auto`;
+  const requestURL = `${baseURL}/v1/air-quality?latitude=${lat}&longitude=${lng}&current=european_aqi,pm10,pm2_5,carbon_monoxide,dust,uv_index,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&timeformat=unixtime&timezone=auto`;
 
   try {
     const response = await axios.get(requestURL);
