@@ -3,7 +3,11 @@ const { login, register } = require("./handlers/authentication");
 const { getAirQuality } = require("./handlers/airQuality");
 const { getLocationCoordinates } = require("./handlers/locationCoordinates");
 const { authMiddleware } = require("./middleware");
-const { createLocation } = require("./handlers/profile");
+const {
+  createLocation,
+  getLocations,
+  deleteLocation,
+} = require("./handlers/profile");
 
 const router = express.Router();
 
@@ -14,6 +18,8 @@ router.get("/getAirQuality", getAirQuality);
 router.get("/getLocationCoordinates", getLocationCoordinates);
 
 router.post("/profile", authMiddleware, createLocation);
+router.get("/profile", authMiddleware, getLocations);
+router.delete("/profile", authMiddleware, deleteLocation);
 
 router.get("/", (req, res) =>
   res.status(200).json({ status: `Breezy API running` })
